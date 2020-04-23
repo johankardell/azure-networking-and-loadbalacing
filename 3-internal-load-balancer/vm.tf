@@ -1,5 +1,5 @@
 locals {
-  resource_grup = "1-WEBSERVER"
+  resource_group = "1-WEBSERVER"
 }
 
 module "frontend1" {
@@ -7,7 +7,7 @@ module "frontend1" {
 
   vm_name             = "vm-web1"
   location            = var.location
-  resource_group_name = local.resource_grup
+  resource_group_name = local.resource_group
   setup_script        = "../scripts/install_apache.sh"
 
   subnet_id = azurerm_subnet.web.id
@@ -18,7 +18,7 @@ module "frontend2" {
 
   vm_name             = "vm-web1"
   location            = var.location
-  resource_group_name = local.resource_grup
+  resource_group_name = local.resource_group
   setup_script        = "../scripts/install_apache.sh"
 
   subnet_id = azurerm_subnet.web.id
@@ -29,7 +29,7 @@ module "backend1" {
 
   vm_name             = "vm-web1"
   location            = var.location
-  resource_group_name = local.resource_grup
+  resource_group_name = local.resource_group
   setup_script        = "../scripts/install_apache.sh"
 
   subnet_id = azurerm_subnet.web.id
@@ -40,7 +40,7 @@ module "backend2" {
 
   vm_name             = "vm-web1"
   location            = var.location
-  resource_group_name = local.resource_grup
+  resource_group_name = local.resource_group
   setup_script        = "../scripts/install_apache.sh"
 
   subnet_id = azurerm_subnet.web.id

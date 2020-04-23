@@ -1,5 +1,5 @@
 locals {
-  resource_grup = "2-WebServer"
+  resource_group = "2-WebServer"
 }
 
 module "webserver1" {
@@ -7,7 +7,7 @@ module "webserver1" {
 
   vm_name             = "2-vm-web1"
   location            = var.location
-  resource_group_name = local.resource_grup
+  resource_group_name = local.resource_group
   setup_script        = "../scripts/install_apache.sh"
 
   subnet_id = azurerm_subnet.web.id
@@ -18,7 +18,7 @@ module "webserver2" {
 
   vm_name             = "2-vm-web2"
   location            = var.location
-  resource_group_name = local.resource_grup
+  resource_group_name = local.resource_group
   setup_script        = "../scripts/install_apache.sh"
 
   subnet_id = azurerm_subnet.web.id
