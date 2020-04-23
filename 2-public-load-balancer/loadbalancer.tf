@@ -29,12 +29,12 @@ resource "azurerm_lb_backend_address_pool" "pool" {
 
 resource "azurerm_network_interface_backend_address_pool_association" "web1" {
   network_interface_id    = module.webserver1.nic_id
-  ip_configuration_name   = "testconfiguration1"
+  ip_configuration_name   = "ipconfiguration"
   backend_address_pool_id = azurerm_lb_backend_address_pool.pool.id
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "web2" {
   network_interface_id    = module.webserver2.nic_id
-  ip_configuration_name   = "testconfiguration1"
+  ip_configuration_name   = "ipconfiguration"
   backend_address_pool_id = azurerm_lb_backend_address_pool.pool.id
 }
