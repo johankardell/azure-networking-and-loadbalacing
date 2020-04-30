@@ -30,25 +30,28 @@ resource "azurerm_lb_rule" "web" {
   probe_id                       = azurerm_lb_probe.web.id
 }
 
-resource "azurerm_lb_nat_rule" "ssh1" {
-  resource_group_name            = azurerm_resource_group.loadbalancer.name
-  loadbalancer_id                = azurerm_lb.public.id
-  name                           = "SSHAccess"
-  protocol                       = "Tcp"
-  frontend_port                  = 221
-  backend_port                   = 22
-  frontend_ip_configuration_name = "PublicIPAddress"
-}
+#These doesn't seem to be working i Terraform - cannot assign backend target
+# resource "azurerm_lb_nat_rule" "ssh1" {
+#   resource_group_name            = azurerm_resource_group.loadbalancer.name
+#   loadbalancer_id                = azurerm_lb.public.id
+#   name                           = "SSHAccess"
+#   protocol                       = "Tcp"
+#   frontend_port                  = 221
+#   backend_port                   = 22
+#   frontend_ip_configuration_name = "PublicIPAddress"
+#   # backend_ip_configuration_id    = module.webserver1.ipconfig_id.id
+# }
 
-resource "azurerm_lb_nat_rule" "ssh2" {
-  resource_group_name            = azurerm_resource_group.loadbalancer.name
-  loadbalancer_id                = azurerm_lb.public.id
-  name                           = "SSHAccess2"
-  protocol                       = "Tcp"
-  frontend_port                  = 222
-  backend_port                   = 22
-  frontend_ip_configuration_name = "PublicIPAddress"
-}
+# resource "azurerm_lb_nat_rule" "ssh2" {
+#   resource_group_name            = azurerm_resource_group.loadbalancer.name
+#   loadbalancer_id                = azurerm_lb.public.id
+#   name                           = "SSHAccess2"
+#   protocol                       = "Tcp"
+#   frontend_port                  = 222
+#   backend_port                   = 22
+#   frontend_ip_configuration_name = "PublicIPAddress"
+#   # backend_ip_configuration_id    = module.webserver2.ipconfig_id.id
+# }
 
 resource "azurerm_lb_probe" "web" {
   interval_in_seconds = 5
